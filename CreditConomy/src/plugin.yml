@@ -1,0 +1,19 @@
+name: CreditConomy
+description: Credit based Economy plugin.
+main: com.domsplace.CreditConomy.CreditConomyPlugin
+authors: [Dominic, Jordan]
+website: http://domsplace.com/
+version: '1.00'
+softdepend: [Vault]
+commands:
+   CreditConomy:
+      description: Provides basic information about the CreditConomy plugin.
+      usage: /<command>
+      permission: CreditConomy.creditconomy
+permissions:
+   CreditConomy.*:
+     description: Gives access to all CreditConomy permissions.
+     children:
+       CreditConomy.creditconomy: true
+   CreditConomy.creditconomy:
+     description: Allows access to reload the Configuration.
