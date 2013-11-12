@@ -16,8 +16,7 @@
 
 package com.domsplace.CreditConomy.Bases;
 
-import com.domsplace.CreditConomy.DataManagers.PluginManager;
-import com.domsplace.CreditConomy.DataManagers.ConfigManager;
+import com.domsplace.CreditConomy.DataManagers.*;
 import com.domsplace.CreditConomy.Enums.ManagerType;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +31,7 @@ public class DataManager extends Base {
     
     public static final PluginManager PLUGIN_MANAGER = new PluginManager();
     public static final ConfigManager CONFIG_MANAGER = new ConfigManager();
+    public static final PlayerManager PLAYER_MANAGER = new PlayerManager();
     
     private static void registerManager(DataManager manager) {
         DataManager.MANAGERS.add(manager);

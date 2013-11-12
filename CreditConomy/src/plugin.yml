@@ -6,14 +6,22 @@ website: http://domsplace.com/
 version: '1.00'
 softdepend: [Vault]
 commands:
-   CreditConomy:
-      description: Provides basic information about the CreditConomy plugin.
-      usage: /<command>
-      permission: CreditConomy.creditconomy
+   balance:
+      description: Returns your balance.
+      aliases: [getbalance, getcash, cash, credits, getcredits]
+      usage: /<command> (player)
+      permission: CreditConomy.balance
 permissions:
    CreditConomy.*:
      description: Gives access to all CreditConomy permissions.
      children:
-       CreditConomy.creditconomy: true
-   CreditConomy.creditconomy:
-     description: Allows access to reload the Configuration.
+       CreditConomy.balance.*: true
+   CreditConomy.balance:
+     description: Allows access to the balance command.
+   CreditConomy.balance.others:
+     description: Allows access to get the balance of another player.
+   CreditConomy.balance.*:
+     description: Allows access to all the balance permissions.
+     children:
+       CreditConomy.balance: true
+       CreditConomy.balance.others: true

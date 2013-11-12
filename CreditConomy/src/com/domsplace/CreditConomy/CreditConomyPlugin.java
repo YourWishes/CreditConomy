@@ -16,12 +16,15 @@
 
 package com.domsplace.CreditConomy;
 
-import com.domsplace.CreditConomy.Bases.DataManager;
-import com.domsplace.CreditConomy.Bases.PluginHook;
-import com.domsplace.CreditConomy.Bases.BukkitCommand;
-import com.domsplace.CreditConomy.Bases.Base;
-import com.domsplace.CreditConomy.Bases.DomsThread;
+import com.domsplace.CreditConomy.Bases.*;
+import com.domsplace.CreditConomy.Commands.*;
+import com.domsplace.CreditConomy.Listeners.*;
+import com.domsplace.CreditConomy.Objects.*;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.ServicePriority;
+import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -32,8 +35,10 @@ public class CreditConomyPlugin extends JavaPlugin {
     private boolean enabled = false;
     
     //Commands
+    private BalanceCommand balanceCommand;
     
     //Listeners
+    private PlayerRegisterListener playerListener;
     
     //Threads
     
@@ -49,12 +54,27 @@ public class CreditConomyPlugin extends JavaPlugin {
         }
         
         //Load Commands
+        this.balanceCommand = new BalanceCommand();
         
         //Load Listeners
+        this.playerListener = new PlayerRegisterListener();
         
         //Load Threads
         
         PluginHook.hookAll();
+        
+        //Add this to Vault
+        if(PluginHook.VAULT_HOOK.isHooked()) {
+            try {
+                Economy ex = CreditConomyEconomy.class.getConstructor(Plugin.class).newInstance(PluginHook.VAULT_HOOK.getHookedPlugin());
+                ServicesManager sm = Bukkit.getServicesManager();
+                sm.register(Economy.class, ex, this, ServicePriority.Normal);
+            } catch(Exception e) {
+                Base.debug(e);
+            } catch(Error e) {
+                Base.debug(e);
+            }
+        }
         
         this.enabled = true;
         Base.debug("Finished Loading " + this.getName() + ", " + BukkitCommand.getCommands().size() + " commands registered.");
@@ -65,6 +85,11 @@ public class CreditConomyPlugin extends JavaPlugin {
         if(!enabled) {
             return;
         }
+        
+        //Unhook Economy
+        try {
+            CreditConomyEconomy.instance = null;
+        } catch(Exception e) {} catch(Error e) {}
         
         DomsThread.stopAllThreads();
         DataManager.saveAll();

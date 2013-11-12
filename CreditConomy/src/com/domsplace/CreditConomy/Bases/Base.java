@@ -607,13 +607,13 @@ public class Base extends RawBase {
     public static boolean hasPermission(CommandSender sender, String permission) {
         if(!isPlayer(sender)) return true;
         if(sender.isOp()) return true;
-        if(sender.hasPermission("DomsCommands.*")) return true;
+        if(sender.hasPermission(getPlugin().getName() + ".*")) return true;
         
         if(PluginHook.VAULT_HOOK.isHooked() && PluginHook.VAULT_HOOK.getPermission() != null) {
             return PluginHook.VAULT_HOOK.getPermission().has(sender, permission);
         }
         
-        if(permission.equals("DomsCommands.none")) return true;
+        if(permission.equals(getPlugin().getName() + ".none")) return true;
         return sender.hasPermission(permission);
     }
     

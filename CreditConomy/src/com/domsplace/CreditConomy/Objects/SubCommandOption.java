@@ -17,18 +17,11 @@
 package com.domsplace.CreditConomy.Objects;
 
 import com.domsplace.CreditConomy.Bases.Base;
-import com.domsplace.CreditConomy.Bases.BukkitCommand;
-import com.domsplace.CreditConomy.Exceptions.InvalidItemException;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffectType;
 
 /**
  * @author      Dominic

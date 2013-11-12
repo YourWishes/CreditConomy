@@ -17,18 +17,13 @@
 package com.domsplace.CreditConomy.DataManagers;
 
 import com.domsplace.CreditConomy.Bases.Base;
-import static com.domsplace.CreditConomy.Bases.Base.ChatDefault;
 import com.domsplace.CreditConomy.Bases.DataManager;
 import com.domsplace.CreditConomy.Enums.ManagerType;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 /**
  * @author      Dominic
@@ -66,6 +61,8 @@ public class ConfigManager extends DataManager {
         df("colors.default", "&7");
         df("colors.important", "&9");
         df("colors.error", "&c");
+        
+        df("money.startingbalance", 100.0d);
         
         //Store Values
         Base.DebugMode = this.config.getBoolean("debug", false);
