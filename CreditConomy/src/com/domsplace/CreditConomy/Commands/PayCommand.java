@@ -77,6 +77,7 @@ public class PayCommand extends BukkitCommand {
         }
         
         CreditPlayer.setBalance(target.getName(), CreditPlayer.getBalance(target.getName()) + amount);
+        CreditPlayer.setBalance(sender.getName(), CreditPlayer.getBalance(sender.getName()) - amount);
         String amt = CreditPlayer.format(amount);
         
         sendMessage(sender, "Sent " + ChatImportant + amt + ChatDefault + " to " + ChatImportant  + getDisplayName(target));
