@@ -21,8 +21,6 @@ import com.domsplace.CreditConomy.Bases.DataManager;
 import com.domsplace.CreditConomy.Enums.ManagerType;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**

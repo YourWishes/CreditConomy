@@ -38,6 +38,7 @@ public class CreditConomyPlugin extends JavaPlugin {
     //Commands
     private BalanceCommand balanceCommand;
     private AddCreditsCommand addCreditsCommand;
+    private PayCommand payCommand;
     
     //Listeners
     private PlayerRegisterListener playerListener;
@@ -59,6 +60,7 @@ public class CreditConomyPlugin extends JavaPlugin {
         //Load Commands
         this.balanceCommand = new BalanceCommand();
         this.addCreditsCommand = new AddCreditsCommand();
+        this.payCommand = new PayCommand();
         
         //Load Listeners
         this.playerListener = new PlayerRegisterListener();

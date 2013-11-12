@@ -3,7 +3,7 @@ description: Credit based Economy plugin.
 main: com.domsplace.CreditConomy.CreditConomyPlugin
 authors: [Dominic, Jordan]
 website: http://domsplace.com/
-version: '1.00'
+version: '1.01'
 softdepend: [Vault]
 commands:
    balance:
@@ -16,12 +16,18 @@ commands:
       aliases: [addcreds]
       usage: /<command> [player] [amount]
       permission: CreditConomy.addcredits
+   pay:
+      description: Send money to someone.
+      aliases: [sendmoney, sendcredits]
+      usage: /<command> [player] [amount]
+      permission: CreditConomy.pay
 permissions:
    CreditConomy.*:
      description: Gives access to all CreditConomy permissions.
      children:
        CreditConomy.balance.*: true
        CreditConomy.addcredits: true
+       CreditConomy.pay: true
    CreditConomy.balance:
      description: Allows access to the balance command.
    CreditConomy.balance.others:
@@ -33,3 +39,5 @@ permissions:
        CreditConomy.balance.others: true
    CreditConomy.addcredits:
      description: Allows access to the addcredits command.
+   CreditConomy.pay:
+     description: Allows access to the pay command.
