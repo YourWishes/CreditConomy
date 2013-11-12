@@ -400,6 +400,11 @@ public class Base extends RawBase {
         return p;
     }
     
+    public static String getDisplayName(OfflinePlayer player) {
+        if(!player.isOnline()) return player.getName();
+        return getPlayer(player).getDisplayName();
+    }
+    
     public static boolean isInt(Object o) {
         try {
             Integer.parseInt(o.toString());

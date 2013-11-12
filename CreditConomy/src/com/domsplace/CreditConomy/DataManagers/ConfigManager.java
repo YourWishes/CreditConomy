@@ -49,14 +49,6 @@ public class ConfigManager extends DataManager {
         
         /*** GENERATE DEFAULT CONFIG ***/
         df("debug", false);
-        df("onlineupdates", true);
-        
-        List<String> cmds = new ArrayList<String>();
-        cmds.add("kick");
-        cmds.add("warn");
-        cmds.add("ban");
-        cmds.add("mute");
-        df("commands.overriden", cmds);
         
         df("colors.default", "&7");
         df("colors.important", "&9");

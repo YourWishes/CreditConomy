@@ -11,11 +11,17 @@ commands:
       aliases: [getbalance, getcash, cash, credits, getcredits]
       usage: /<command> (player)
       permission: CreditConomy.balance
+   addcredits:
+      description: Adds credits to a players balance.
+      aliases: [addcreds]
+      usage: /<command> [player] [amount]
+      permission: CreditConomy.addcredits
 permissions:
    CreditConomy.*:
      description: Gives access to all CreditConomy permissions.
      children:
        CreditConomy.balance.*: true
+       CreditConomy.addcredits: true
    CreditConomy.balance:
      description: Allows access to the balance command.
    CreditConomy.balance.others:
@@ -25,3 +31,5 @@ permissions:
      children:
        CreditConomy.balance: true
        CreditConomy.balance.others: true
+   CreditConomy.addcredits:
+     description: Allows access to the addcredits command.

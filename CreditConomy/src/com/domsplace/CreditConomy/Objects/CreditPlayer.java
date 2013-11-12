@@ -28,7 +28,7 @@ public class CreditPlayer {
     }
     
     public static void setBalance(String player, double amt) {
-        getPlayerManager().getCFG().set(player, amt);
+        getPlayerManager().getCFG().set(player.toLowerCase(), amt);
         getPlayerManager().save();
     }
     

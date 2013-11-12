@@ -83,9 +83,6 @@ public class CreditConomyEconomy implements Economy {
 
     @Override
     public EconomyResponse withdrawPlayer(String string, double d) {
-        if(d < 0) return new EconomyResponse(0, 0, ResponseType.FAILURE, "Cannot withdraw negative funs.");
-        if(!hasAccount(string)) return new EconomyResponse(0, 0, ResponseType.FAILURE, "That player does not have an account!");
-        if(!has(string, d)) return new EconomyResponse(0, getBalance(string), ResponseType.FAILURE, "Insufficient funds");
         CreditPlayer.setBalance(string, CreditPlayer.getBalance(string) - d);
         return new EconomyResponse(d, getBalance(string), ResponseType.SUCCESS, null);
     }
@@ -97,8 +94,6 @@ public class CreditConomyEconomy implements Economy {
 
     @Override
     public EconomyResponse depositPlayer(String string, double d) {
-        if(d < 0) return new EconomyResponse(0, 0, ResponseType.FAILURE, "Cannot deposit negative funs.");
-        if(!hasAccount(string)) return new EconomyResponse(0, 0, ResponseType.FAILURE, "That player does not have an account!");
         CreditPlayer.setBalance(string, CreditPlayer.getBalance(string) + d);
         return new EconomyResponse(d, getBalance(string), ResponseType.SUCCESS, null);
     }

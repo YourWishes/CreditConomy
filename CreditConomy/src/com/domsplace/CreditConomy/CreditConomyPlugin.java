@@ -20,6 +20,7 @@ import com.domsplace.CreditConomy.Bases.*;
 import com.domsplace.CreditConomy.Commands.*;
 import com.domsplace.CreditConomy.Listeners.*;
 import com.domsplace.CreditConomy.Objects.*;
+import com.domsplace.CreditConomy.Threads.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -36,11 +37,13 @@ public class CreditConomyPlugin extends JavaPlugin {
     
     //Commands
     private BalanceCommand balanceCommand;
+    private AddCreditsCommand addCreditsCommand;
     
     //Listeners
     private PlayerRegisterListener playerListener;
     
     //Threads
+    private ConfigSaveThread configSaveThread;
     
     @Override
     public void onEnable() {
@@ -55,11 +58,13 @@ public class CreditConomyPlugin extends JavaPlugin {
         
         //Load Commands
         this.balanceCommand = new BalanceCommand();
+        this.addCreditsCommand = new AddCreditsCommand();
         
         //Load Listeners
         this.playerListener = new PlayerRegisterListener();
         
         //Load Threads
+        this.configSaveThread = new ConfigSaveThread();
         
         PluginHook.hookAll();
         
